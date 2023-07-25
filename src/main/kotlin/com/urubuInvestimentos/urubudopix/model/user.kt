@@ -13,6 +13,6 @@ import java.time.LocalDate
     val email: String= "",
     val phone: String= "",
     val birthdate: LocalDate = LocalDate.now(),
-    val value:  Double,
+    var value:  Double,
 )
 
