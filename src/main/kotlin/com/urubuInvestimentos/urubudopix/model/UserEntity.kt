@@ -5,7 +5,7 @@ import jakarta.persistence.Id
 import java.time.LocalDate
 
 @Entity
- data class User(
+ data class UserEntity(
     @Id
     val cpf: String= "",
     val password: String= "",
