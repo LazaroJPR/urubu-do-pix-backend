@@ -2,7 +2,6 @@ package com.urubuInvestimentos.urubudopix.model
 
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
-import jakarta.persistence.OneToOne
 import java.time.LocalDate
 
 @Entity
@@ -14,7 +13,6 @@ import java.time.LocalDate
     val email: String= "",
     val phone: String= "",
     val birthdate: LocalDate = LocalDate.now(),
-
-    @OneToOne(mappedBy = "user")
-    val account: Account? = null
+    val value:  Double,
 )
+
