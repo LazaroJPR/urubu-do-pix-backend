@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=users
+      - MYSQL_USER=urubu-do-pix
+      - MYSQL_PASSWORD=password
+    ports:
+      - 3307:3306
+    volumes:
+      - db-data:/var/lib/mysql
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DB_URL=jdbc:mysql://db:3306/posts
+    ports:
+      - 8081:8081
+    depends_on:
+      - db
+
+volumes:
+  db-data:
