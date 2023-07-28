@@ -22,6 +22,7 @@ jobs:
           pwd
           ls
           cd urubu-do-pix-backend
+          ls
           docker build -t "ghcr.io/LazaroJPR/Urubu-do-Pix-Backend:latest" -f Dockerfile .
           docker images
           docker push "ghcr.io/LazaroJPR/Urubu-do-Pix-Backend:latest"
