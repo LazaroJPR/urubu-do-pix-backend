@@ -1,26 +1,29 @@
 name: Push
+permissions: write-all
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
-# Alterar o build quando terminar o dockerfile
   build:
-      runs-on: ubuntu-latest
-
-      steps:
+    name: Building
+    runs-on: ubuntu-latest
+    needs: tests
+    steps:
       - name: Checkout do código-fonte
         uses: actions/checkout@v2
 
-      - name: Configurar o ambiente Java
-        uses: actions/setup-java@v2.4.0
-        with:
-          java-version: '17'
-          distribution: 'adopt'
+      - name: Login no Docker registry
+        run: echo "${{secrets.GITHUB_TOKEN}}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
-
-      - name: Fazer o build # Somente faz o build, sem teste.
+      - name: Construir a imagem Docker
         run: |
-          cd urubu-do-pix-backend && ./gradlew build
+          cd post-microsservice
+          docker build -t "ghcr.io/lukerops/ufes-posts-microservice:latest" -f Dockerfile .
+          docker images
+          docker push "ghcr.io/lukerops/ufes-posts-microservice:latest"
+
+      - name: Listar imagens
+        run: docker images
