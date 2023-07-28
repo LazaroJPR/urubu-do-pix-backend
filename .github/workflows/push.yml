@@ -19,9 +19,9 @@ jobs:
 
       - name: Construir a imagem Docker
         run: |
-          docker build -t "ghcr.io/LazaroJPR/Urubu-do-Pix-Backend:latest" -f Dockerfile .
+          docker build -t "ghcr.io/LazaroJPR/urubu-do-pix-backend:latest" -f Dockerfile .
           docker images
-          docker push "ghcr.io/LazaroJPR/Urubu-do-Pix-Backend:latest"
+          docker push "ghcr.io/LazaroJPR/urubu-do-pix-backend:latest"
 
       - name: Listar imagens
         run: docker images
