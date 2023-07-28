@@ -1,8 +1,7 @@
 name: Push
 
 on:
-  pull_request:
-  workflow_dispatch:
+  push:
 
 jobs:
 # Alterar o build quando terminar o dockerfile
@@ -24,4 +23,4 @@ jobs:
 
       - name: Fazer o build # Somente faz o build, sem teste.
         run: |
-          cd urubu-do-pix && ./gradlew build
+          cd urubu-do-pix-backend && ./gradlew build
