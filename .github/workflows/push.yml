@@ -19,6 +19,7 @@ jobs:
 
       - name: Construir a imagem Docker
         run: |
+          ls
           cd urubu-do-pix-backend
           docker build -t "ghcr.io/LazaroJPR/Urubu-do-Pix-Backend:latest" -f Dockerfile .
           docker images
