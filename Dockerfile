@@ -4,9 +4,12 @@ WORKDIR /app
 
 RUN apt-get update -y && \
     apt-get install -y openjdk-17-jdk && \
-    apt-get install -y curl
+    apt-get install -y curl && \
+    apt-get install -y git
 
-COPY . .
+RUN git clone https://github.com/LazaroJPR/urubu-do-pix-backend.git .
+
+RUN chmod +x ./gradlew
 
 RUN ./gradlew build --stacktrace
 
